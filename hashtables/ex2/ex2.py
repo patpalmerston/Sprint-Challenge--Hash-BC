@@ -11,6 +11,9 @@ class Ticket:
         self.source = source
         self.destination = destination
 
+    def __repr__(self):
+        return f"source: {self.source}, dest: {self.destination}"
+
 
 def reconstruct_trip(tickets, length):
     hashtable = HashTable(length)
@@ -19,5 +22,17 @@ def reconstruct_trip(tickets, length):
     """
     YOUR CODE HERE
     """
+    #need to insert tickets into hash table
+    for ticket in tickets:
+        hash_table_insert(hashtable, ticket.source, ticket.destination)
+        print('ticket', ticket)
+    print('len', length)
 
-    pass
+    destination = 'NONE'
+    #iterate through the length
+    for x in range(length):
+        #now need to retrieve each route
+        route[x] = hash_table_retrieve(hashtable, destination)
+        destination = route[x]
+
+    return route
