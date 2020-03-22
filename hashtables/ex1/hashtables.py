@@ -18,6 +18,12 @@ class HashTable:
         self.capacity = capacity
         self.storage = [None] * capacity
 
+    def __repr__(self):
+        return f"{self}, storage:{self.storage}"
+
+    def __str__(self):
+        return f"{self}, storage:{self.storage}"
+
 
 # Hash int
 def hash(x, max):
